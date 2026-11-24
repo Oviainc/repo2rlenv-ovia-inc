@@ -1,3 +1,17 @@
+> **Ovia Inc fork reference:** this repository is a fork of [huggingface/Repo2RLEnv](https://github.com/huggingface/Repo2RLEnv), kept in the Ovia Inc collection for evaluation. All credit for the roject belongs to its authors; the licence (Apache-2.0, with MIT-licensed components as listed in the upstream THIRD_PARTY_NOTICES) stands exactly as in the original. Ovia modifications so far are cumentation only: this header. The code is unchanged from the fork point unless a later Ovia Inc commit says otherwise.
+
+## Ovia Inc — why this repository sits in the collection
+
+![Ovia Inc — Repo2RLEnv banner from the upstream project assets](assets/banner.png)
+
+Repo2RLEnv turns repositories, pull requests, agent trajectories and task seeds into Harbor tasks: each task carries an instruction, a starting environment, a verifier and a reference solution, ready to train on, evaluate against, and share on the Hugging Face Hub. It is one of the two code releases behind the Hugging Face harness adapters work (November 2026), where a model is trained with reinforcement learning inside the exact agent harness it will run in, rather than against a re-implementation of that harness.
+
+For a studio that runs agents as managed operations, verifiable tasks are the raw material of trust: a task with a verifier is a promise that can be checked. We hold Repo2RLEnv on the training and evaluation shelf, beside the harness and agent frameworks already in the collection, and we evaluate it on three things: how faithfully its generated tasks keep a real repository's difficulty, how its review and repair loop holds task quality as volume grows, and how its Harbor task format composes with the harnesses we already run.
+
+## Story
+
+Repo2RLEnv comes from Hugging Face, published alongside the harness adapters research in November 2026. The research trained one LoRA adapter per agent harness (pi, OpenCode, Hermes Agent) for Qwen3.8-27B, with the harness running exactly as it ships and a proxy recording the tokens the trainer learns from. That training needed tasks by the hundreds, each one verifiable: the final mixture drew on tasks built from real repositories and merged pull requests, filtered so the base model neither always nor never solves them. Repo2RLEnv is the tool that builds those tasks from source material, with generation, control checks, review and repair revisions, and an evidence label on every task it keeps. It sits in this collection as the task factory of that recipe: the piece that turns ordinary repositories into the graded work an agent can actually learn from.
+
 <h1 align="center">Repo2RLEnv</h1>
 
 <p align="center">
